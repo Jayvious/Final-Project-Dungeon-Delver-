@@ -41,6 +41,7 @@ public class TileCamera : MonoBehaviour
         for(int j = 0; j<H; j++)
         {
             tileNums = lines[j].Split(' ');
+            
             for(int i = 0; i<W; i++)
             {
                 if(tileNums[i] == "..")
