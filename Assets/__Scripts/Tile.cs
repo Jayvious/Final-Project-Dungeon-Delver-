@@ -22,7 +22,7 @@ public class Tile : MonoBehaviour
         }
 
         tileNum = eTileName;
-        GetComponent<SpriteRenderer>().sprite = TileCamera.SPRITES(tileNum);
+        GetComponent<SpriteRenderer>().sprite = TileCamera.SPRITES[tileNum];
     }
 
     // Start is called before the first frame update
