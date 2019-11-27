@@ -12,6 +12,10 @@ public class Dray : MonoBehaviour
 
     private Rigidbody rigid;
 
+    private Vector3[] directions = new Vector3[]
+    { Vector3.right, Vector3.up, Vector3.left, Vector3.down};
+
+
      void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -36,21 +40,7 @@ public class Dray : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow)) dirHeld = 3;
 
         Vector3 vel = Vector3.zero;
-        switch (dirHeld)
-        {
-            case 0:
-                vel = Vector3.right;
-                break;
-            case 1:
-                vel = Vector3.up;
-                break;
-            case 2:
-                vel = Vector3.left;
-                break;
-            case 3:
-                vel = Vector3.down;
-                break;
-        }
+        if (dirHeld > -1) vel = directions[dirHeld];
 
         rigid.velocity = vel * speed;
     }
