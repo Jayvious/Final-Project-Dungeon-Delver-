@@ -51,7 +51,7 @@ public class InRoom : MonoBehaviour
         }
     }
 
-    public Vector2 GetRoomOnGrid(float mult = -1)
+    public Vector2 GetRoomPosOnGrid(float mult = -1)
     {
         if(mult == -1)
         {
