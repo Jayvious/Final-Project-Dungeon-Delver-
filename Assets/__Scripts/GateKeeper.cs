@@ -27,9 +27,57 @@ public class GateKeeper : MonoBehaviour
         
     }
 
-     void OnCollisionStay(Collision collision)
+     void OnCollisionStay(Collision coll)
     {
+        if (keys.keyCount < 1) return;
 
+        Tile ti = coll.gameObject.GetComponent<Tile>();
+        if (ti == null) return;
+
+        int facing = keys.GetFacing();
+
+        Tile ti2;
+
+        switch (ti.tileNum)
+        {
+            case lockedR:
+                if (facing != 0) return;
+                ti.SetTile(ti.x, ti.y, openR);
+                break;
+            case lockedUR:
+                if (facing != 1) return;
+                ti.SetTile(ti.x, ti.y, openUR);
+                ti2 = TileCamera.TILES[ti.x - 1, ti.y];
+                ti2.SetTile(ti2.x, ti2.y, openUL);
+                break;
+            case lockedUL:
+                if (facing != 1) return;
+                ti.SetTile(ti.x, ti.y, openUL);
+                ti2 = TileCamera.TILES[ti.x + 1, ti.y];
+                ti2.SetTile(ti2.x, ti2.y, openUR);
+                break;
+            case lockedL:
+                if (facing != 2) return;
+                ti.SetTile(ti.x, ti.y, openL);
+                break;
+            case lockedDL:
+                if (facing != 3) return;
+                ti.SetTile(ti.x, ti.y, openDL);
+                ti2 = TileCamera.TILES[ti.x + 1, ti.y];
+                ti2.SetTile(ti2.x, ti2.y, openDR);
+                break;
+            case lockedDR:
+                if (facing != 3) return;
+                ti.SetTile(ti.x, ti.y, openDR);
+                ti2 = TileCamera.TILES[ti.x - 1, ti.y];
+                ti2.SetTile(ti2.x, ti2.y, openDL);
+                break;
+            default:
+                return;
+
+        }
+
+        keys.keyCount--;
         
     }
 
