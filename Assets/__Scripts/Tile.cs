@@ -17,19 +17,23 @@ public class Tile : MonoBehaviour
         
     }
 
-    public void SetTile(int eX, int eY, int eTileName = -1)
+    public void SetTile(int eX, int eY, int eTileNum = -1)
     {
         x = eX;
         y = eY;
         transform.localPosition = new Vector3(x, y, 0);
         gameObject.name = x.ToString("D3") + "X" + y.ToString("D3");
 
-        if(eTileName == -1)
+        if(eTileNum == -1)
         {
-            eTileName = TileCamera.GET_MAP(x, y);
+            eTileNum = TileCamera.GET_MAP(x, y);
+        }
+        else
+        {
+            TileCamera.SET_MAP(x, y, eTileNum);
         }
 
-        tileNum = eTileName;
+        tileNum = eTileNum;
         GetComponent<SpriteRenderer>().sprite = TileCamera.SPRITES[tileNum];
 
         SetCollider();
