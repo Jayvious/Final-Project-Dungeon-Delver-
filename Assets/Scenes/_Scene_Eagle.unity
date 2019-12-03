@@ -389,6 +389,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e15fcced2d584895c0761d18f32ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &487098629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013282365372, guid: ef2195d4d1bab4df9ad6dc73b0faebb1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203205827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &487098630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487098629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be493c329d989c04ab66f52bd59c508d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dray: {fileID: 1108669815}
+  healthEmpty: {fileID: 21300000, guid: 7e5dff7b4f89342ffaefe40a143cfe81, type: 3}
+  healthHalf: {fileID: 21300002, guid: 7e5dff7b4f89342ffaefe40a143cfe81, type: 3}
+  healthFull: {fileID: 21300004, guid: 7e5dff7b4f89342ffaefe40a143cfe81, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,10 +679,12 @@ MonoBehaviour:
   attackDuration: 0.25
   attackDelay: 0.5
   transitionDelay: 0.5
+  maxHealth: 10
   dirHeld: -1
   facing: 1
   mode: 0
   numKeys: 0
+  _health: 0
 --- !u!135 &1108669816
 SphereCollider:
   m_ObjectHideFlags: 0
