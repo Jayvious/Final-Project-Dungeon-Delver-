@@ -22,7 +22,7 @@ public class Grapple : MonoBehaviour
 
     private Dray dray;
     private Rigidbody rigid;
-    private Animator anim;
+    private Animator   anim;
     private Collider drayCollid;
 
     private GameObject grapHead;
