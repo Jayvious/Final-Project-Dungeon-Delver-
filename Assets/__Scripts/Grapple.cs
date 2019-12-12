@@ -104,6 +104,7 @@ public class Grapple : MonoBehaviour
         grapLine.positionCount = 2;
         grapLine.SetPosition(0, p0);
         grapLine.SetPosition(1, p1);
+        mode = eMode.gOut;
     }
 
      void FixedUpdate()
@@ -126,6 +127,7 @@ public class Grapple : MonoBehaviour
                     mode = eMode.gInMiss;
                 }
                 break;
+         
             case eMode.gInMiss:
                 p1 -= directions[facing] * 2 * grappleSpd * Time.fixedDeltaTime;
                 if(Vector3.Dot((p1-p0), directions[facing]) > 0)
@@ -137,6 +139,21 @@ public class Grapple : MonoBehaviour
                 {
                     StopGrapple();
                 }
+                break;
+
+            case eMode.gInHit:
+                float dist = grappleInLength + grappleSpd * Time.fixedDeltaTime;
+                if(dist > (p1 - p0).magnitude)
+                {
+                    p0 = p1 - (directions[facing] * grappleInLength);
+                    transform.position = p0;
+                    StopGrapple();
+                    break;
+                }
+                p0 += directions[facing] * grappleSpd * Time.fixedDeltaTime;
+                transform.position = p0;
+                grapLine.SetPosition(0, p0);
+                grapHead.transform.position = p1;
                 break;
         }
         
